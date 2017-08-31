@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ruby '2.4.1'
 
 source 'https://rubygems.org'
@@ -19,6 +21,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug', platform: :mri
   gem 'pry'
+  gem 'rubocop', require: false
 end
 
 group :development do
@@ -28,4 +31,4 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

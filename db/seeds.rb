@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Currency.update_currencies
 
 return unless Currency.last.nil?
