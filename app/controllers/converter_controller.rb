@@ -2,10 +2,10 @@ class ConverterController < ApplicationController
   def index; end
 
   def convert
-    current         = Currency.find(name: params[:current])
-    wanted          = Currency.find(name: params[:wanted])
-    change_currency = params[:changeCurrency].to_i
-    @result         = (change_currency / current.rate) * wanted.rate
+    current         = Currency.find_by(name: params[:current])
+    wanted          = Currency.find_by(name: params[:wanted])
+    change_currency = params[:changeCurrency].to_f
+    @result         = ( change_currency / wanted.rate ) * current.rate
 
     respond_to :js
   end
