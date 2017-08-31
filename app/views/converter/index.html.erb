@@ -1,0 +1,26 @@
+<h1 class="text-center">Converter</h1>
+
+<section class="select-block text-center">
+  <select class="select-tag" id="currentCurrency">
+    <option value=""></option>
+    <option value="usd">USD</option>
+    <option value="euro">Euro</option>
+    <option value="gbp">Pound</option>
+  </select>
+
+  <select class="select-tag" id="wantedCurrency">
+    <option value=""></option>
+    <option value="usd">USD</option>
+    <option value="euro">Euro</option>
+    <option value="gbp">Pound</option>
+  </select>
+</section>
+
+<section class="inputs-block text-center">
+  <input class="form-control">
+  <input class="form-control" disabled>
+</section>
+
+<section class="actions text-center">
+  <%= link_to 'Convert', '#', class: 'btn btn-default'%>
+</section>
