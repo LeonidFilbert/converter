@@ -10,7 +10,7 @@ class Currency < ApplicationRecord
       res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
 
       JSON.parse(res.body).each do |item|
-        create(name: item.cc, rate: item.rate)
+        create(name: item[:cc], rate: item[:rate])
       end
     end
   end

@@ -1,24 +1,29 @@
+<% options = Currency.pluck(:name).map { |currency| "<option value='#{currency}'>#{currency}</option>" }.join %>
+
 <h1 class="text-center">Converter</h1>
 
-<section class="select-block text-center">
-  <select class="select-tag" id="currentCurrency">
-    <option value="usd">USD</option>
-    <option value="euro">Euro</option>
-    <option value="gbp">Pound</option>
-  </select>
+<%= form_tag('/convert', method: 'post', remote: true) do%>
+  <section class="select-block text-center">
+    <%= select_tag :current,
+                   options.html_safe,
+                   class: 'select-tag',
+                   required: '',
+                   id: 'currentCurrency' %>
+    <%= select_tag :wanted,
+                   options.html_safe,
+                   class: 'select-tag',
+                   required: '',
+                   id: 'wantedCurrency' %>
+  </section>
 
-  <select class="select-tag" id="wantedCurrency">
-    <option value="usd">USD</option>
-    <option value="euro">Euro</option>
-    <option value="gbp">Pound</option>
-  </select>
-</section>
+  <section class="inputs-block text-center">
+    <%= text_field_tag :changeCurrency, '',
+                       required: '',
+                       class: 'form-control'%>
+    <%= text_field_tag :resultCurrency, '', class: 'form-control', disabled: true %>
+  </section>
 
-<section class="inputs-block text-center">
-  <input class="form-control" id="changeCurrency">
-  <input class="form-control" id="resultCurrency" disabled>
-</section>
-
-<section class="actions text-center">
-  <%= link_to 'Convert', '#', class: 'btn btn-default'%>
-</section>
+  <section class="actions-group text-center">
+    <%= submit_tag 'Calculate', class: 'btn btn-default btn-lg', remote: true %>
+  </section>
+<% end %>
